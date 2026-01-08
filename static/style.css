@@ -1,0 +1,356 @@
+:root {
+    --bg: #020617;
+    --bg-alt: #0f172a;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --card: rgba(255,255,255,0.03);
+    --accent: #38bdf8;
+}
+
+[data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-alt: #e5e7eb;
+    --text: #020617;
+    --muted: #475569;
+    --card: rgba(0,0,0,0.05);
+    --accent: #0284c7;
+}
+
+*
+ {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg), var(--bg-alt));
+    color: var(--text);
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+     background: linear-gradient(
+        135deg,
+        var(--bg),
+        var(--bg-alt)
+    );
+    color: var(--text);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* CONTENT */
+.content {
+    padding: 80px 60px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+/* HEADINGS */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* CARD STYLE (we’ll reuse this later) */
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+/* HERO SECTION */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; 
+    z-index: 1;     
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+}
+
+.hero-content h1 span {
+    color: #38bdf8;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin: 20px auto 40px;
+}
+
+/* BUTTONS */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background: #38bdf8;
+    color: var(--bg);
+}
+
+.btn.primary:hover {
+   
+     transform: translateY(-3px) scale(1.03);
+}
+
+.btn.secondary {
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.btn.secondary:hover {
+     transform: translateY(-3px) scale(1.03);
+}
+
+/* CONTACT FORM */
+.contact-form {
+    max-width: 600px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--muted);
+}
+
+.contact-form button {
+    align-self: center;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .content {
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeUp 0.8s ease forwards;
+}
+.hero-content h1 {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-content p {
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.hero-buttons {
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.4s;
+}
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+body, .navbar, .card {
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.flash {
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeUp 0.4s ease;
+}
+
+.flash.success {
+    background: #22c55e;
+    color: #022c22;
+}
+
+.flash.error {
+    background: #ef4444;
+    color: #450a0a;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.flash {
+    animation: fadeOut 4s ease forwards;
+}
+
+.admin-title {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 2rem;
+}
+
+.admin-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 14px;
+    text-align: left;
+}
+
+.admin-table th {
+    background: var(--accent);
+    color: white;
+}
+
+.admin-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}

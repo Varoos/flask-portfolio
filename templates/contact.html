@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div class="container">
+    <h1>Contact Me</h1>
+    <p>Let’s connect. I’d love to hear from you.</p>
+
+    {% if success %}
+        <div class="card">
+            <p>✅ Your message has been sent!</p>
+        </div>
+    {% endif %}
+
+    <form method="POST" class="card contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn primary">Send Message</button>
+        <input type="text" name="company" style="display:none">
+    </form>
+</div>
+{% endblock %}

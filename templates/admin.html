@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="admin-title">Contact Messages</h2>
+
+<table class="admin-table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+
+    {% for msg in messages %}
+    <tr>
+        <td>{{ msg[0] }}</td>
+        <td>{{ msg[1] }}</td>
+        <td>{{ msg[2] }}</td>
+        <td>{{ msg[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
