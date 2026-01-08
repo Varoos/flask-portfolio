@@ -93,37 +93,32 @@ def contact():
 def admin():
     if not session.get("admin_logged_in"):
         return redirect(url_for("admin_login"))
-    conn = sqlite3.connect("messages.db", check_same_thread=False)
+
+    conn = sqlite3.connect("messages.db")
     cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT name, email, message, created_at
-        FROM messages
-        ORDER BY created_at DESC
-    """)
+    cursor.execute("SELECT name, email, message FROM messages")
     messages = cursor.fetchall()
-
     conn.close()
 
     return render_template("admin.html", messages=messages)
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        password = request.form["password"]
 
-        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        if password == ADMIN_PASSWORD:
             session["admin_logged_in"] = True
             return redirect(url_for("admin"))
-
-        flash("Invalid credentials", "error")
-        return redirect(url_for("admin_login"))
+        else:
+            flash("Invalid password", "danger")
 
     return render_template("admin_login.html")
+@app.route("/admin/logout")
+def admin_logout():
+    session.clear()
+    return redirect(url_for("admin_login"))
 
 if __name__ == "__main__":
 
 
     app.run(debug=True)
-EMAIL_ADDRESS = "rosmindilip@gmail.com"
-EMAIL_PASSWORD = "qbfpflzddrfrfnyj"
