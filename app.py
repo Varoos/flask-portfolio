@@ -2,13 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import sqlite3
 import smtplib
 from email.message import EmailMessage
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  
-EMAIL_ADDRESS = "rosmindilip@gmail.com"
-EMAIL_PASSWORD = "qbfpflzddrfrfnyj"
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
+app.secret_key = os.getenv("SECRET_KEY")
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
 projects = [
     {
         "title": "Flask Portfolio",
