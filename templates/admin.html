@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div style="text-align: right; margin-bottom: 20px;">
+    <a href="{{ url_for('admin_logout') }}"
+       style="text-decoration:none; color:#ef4444; font-weight:bold;">
+        Logout
+    </a>
+</div>
 <h2 class="admin-title">Contact Messages</h2>
 
 <table class="admin-table">
