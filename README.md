@@ -202,8 +202,8 @@ CI/CD pipeline
 
 👤 Author
 
-[Your Name]
-Python & Backend Developer
+Rosmin
+Full-Stack Developer
 Portfolio Project – Flask Web Application
 
 📄 License
